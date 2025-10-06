@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             x:Class="EmptyMauiApp.Views.NamePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <local:BasePage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+        </LinearGradientBrush>
+    </local:BasePage.Background>
+
+    <Grid RowDefinitions="2*, 1.5*, 0.8*, 0.8*, 5*, 0.5*">
+        
+        <Label Grid.Row="1"
+            Text="Hogyan hívhatlak?" 
+            TextColor="{DynamicResource SecondaryColor}"
+            FontSize="40"
+            FontFamily="AptosExtrabold"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            MaximumWidthRequest="300"
+            LineBreakMode="WordWrap"/>
+
+        <Border 
+            Grid.Row="2"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 30"
+            HeightRequest="60"
+            WidthRequest="200"
+            Padding="10,5"
+            HorizontalOptions="Fill" 
+            Stroke="{DynamicResource Secondary}">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{DynamicResource Primary}" Offset="0.0" />
+                    <GradientStop Color="{DynamicResource Primary}" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 30"
+                HeightRequest="60"
+                WidthRequest="200"
+                BackgroundColor="Transparent"
+                Padding="10,5"
+                HorizontalOptions="Fill">
+
+                <Entry x:Name="NameEntry"
+                    Keyboard="Text"
+                    Placeholder="Írd ide..."
+                    PlaceholderColor="{DynamicResource Secondary}"
+                    MaxLength="15"
+                    WidthRequest="150"
+                    HeightRequest="60"
+                    TextColor="{DynamicResource Secondary}"
+                    FontFamily="AptosExtrabold"
+                    FontSize="24"
+                    TextChanged="OnNameTextChanged" >
+
+                </Entry>
+            </Border>
+        </Border>
+
+        <Button Grid.Row="3"
+            x:Name="ContinueButton" 
+            FontSize="24"
+            Text="Tovább" 
+            FontFamily="AptosExtrabold"
+            IsEnabled="False"
+            WidthRequest="200"
+            HeightRequest="60"
+            CornerRadius="30"
+            Clicked="OnContinueClicked" 
+            HorizontalOptions="Center" 
+            Margin="0,20,0,0" >
+
+        </Button>
+
+        <Label Grid.Row="5" 
+               Text="Később módosítható" 
+               FontSize="20"
+               FontFamily="AptosLight"
+               TextColor="{DynamicResource TitleColor}" 
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Start"/>
+
+    </Grid>
+</local:BasePage>

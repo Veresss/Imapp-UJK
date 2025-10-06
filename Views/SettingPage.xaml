@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             x:Class="EmptyMauiApp.Views.SettingPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <local:BasePage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+        </LinearGradientBrush>
+    </local:BasePage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="0">
+            <HorizontalStackLayout Padding="20,0" Margin="0,40,0,20">
+                <Image Source="logo.png"
+                       HeightRequest="60"
+                       Aspect="AspectFit"/>
+                <Label Text="Beállítások"
+                       FontFamily="AptosExtrabold"
+                       FontSize="24"
+                       TextColor="{DynamicResource SecondaryColor}"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+                <ImageButton Source="x_icon.png"
+                             HorizontalOptions="End"
+                             BackgroundColor="Transparent"
+                             HeightRequest="60"
+                             WidthRequest="60"
+                             Clicked="OnBackButtonClicked"
+                             Margin="70,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Padding="20,0" HorizontalOptions="Center">
+                <Label Text="Értesítések engedélyezése"
+                       FontFamily="AptosExtrabold"
+                       FontSize="20"
+                       TextColor="{DynamicResource SecondaryColor}"
+                       VerticalOptions="Center"
+                       Margin="20,0,20,0"/>
+                <Switch x:Name="NotificationsSwitch"
+                        ThumbColor="{DynamicResource PrimaryColor}"
+                        Scale="1.5"
+                        Toggled="OnNotificationsToggled"/>
+            </HorizontalStackLayout>
+
+            <Border Stroke="{DynamicResource SecondaryTransparent}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="{DynamicResource PrimaryTransparent}"
+                    WidthRequest="340"
+                    HeightRequest="100"
+                    Padding="20,10"
+                    Margin="20,0"
+                    HorizontalOptions="Center">
+                <Label Text="Felhasználónév módosítása"
+                       FontFamily="AptosExtrabold"
+                       FontSize="20"
+                       TextColor="{DynamicResource SecondaryColor}"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnUsernameEditTapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <Border Stroke="{DynamicResource SecondaryTransparent}"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="{DynamicResource PrimaryTransparent}"
+                WidthRequest="340"
+                HeightRequest="100"
+                Padding="20,10"
+                Margin="20,0"
+                HorizontalOptions="Center">
+                <Label Text="App megjelenés kiválasztása"
+                   FontFamily="AptosExtrabold"
+                   FontSize="20"
+                   TextColor="{DynamicResource SecondaryColor}"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnStyleEditTapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</local:BasePage>
