@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:EmptyMauiApp.Models"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             xmlns:conv="clr-namespace:EmptyMauiApp.Converters"
+             x:Class="EmptyMauiApp.Views.PlannerPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <local:BasePage.Resources>
+        <conv:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
+    </local:BasePage.Resources>
+
+    <local:BasePage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+        </LinearGradientBrush>
+    </local:BasePage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="0">
+            <HorizontalStackLayout Padding="20,0" Margin="0,40,0,0">
+                <Image Source="logo.png"
+                       HeightRequest="60"
+                       Aspect="AspectFit"/>
+                <Label Text="Heti imatervem"
+                       FontFamily="AptosExtrabold"
+                       FontSize="24"
+                       TextColor="{DynamicResource TitleColor}"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+                <ImageButton 
+                        Source="x_icon.png"
+                        HorizontalOptions="End"
+                        BackgroundColor="Transparent"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        Clicked="OnBackButtonClicked"
+                        Margin="50,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout x:Name="DaysContainer" 
+                         Spacing="-20" 
+                         Padding="0,20,0,40"
+                         VerticalOptions="Start">
+            </VerticalStackLayout>
+
+            <Border
+                Stroke="{DynamicResource SecondaryTransparent}"
+                WidthRequest="340"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Background="{DynamicResource PrimaryTransparent}"
+                Padding="20"
+                HorizontalOptions="Center"
+                Margin="20,20,20,20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Beállítás minden napra"
+                           FontFamily="AptosExtrabold"
+                           FontSize="20"
+                           TextColor="{DynamicResource PrimaryColor}"
+                           HorizontalOptions="Center"/>
+                    <Switch 
+                        x:Name="GlobalSwitch"
+                        ThumbColor="{DynamicResource PrimaryColor}"
+                        HorizontalOptions="Center"
+                        Scale="1.5"
+                        Toggled="OnGlobalSwitchToggled"/>
+                    <TimePicker 
+                        x:Name="GlobalTimePicker"
+                        Format="HH:mm"
+                        HorizontalOptions="Center"
+                        WidthRequest="250"
+                        FontSize="24"
+                        FontFamily="AptosExtrabold"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        BackgroundColor="Transparent"
+                        PropertyChanged="OnGlobalTimePickerChanged"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <HorizontalStackLayout Padding="20,0">
+                <Label Text="Tippek"
+                   FontFamily="AptosExtrabold"
+                   FontSize="24"
+                   TextColor="{DynamicResource TitleColor}"
+                   VerticalTextAlignment="Start"
+                   Margin="20,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <Border Margin="0,0,0,20"
+                Stroke="{DynamicResource SecondaryTransparent}"
+                MaximumWidthRequest="340"
+                MaximumHeightRequest="300"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Background="{DynamicResource PrimaryTransparent}"
+                Padding="20"
+                HorizontalOptions="Fill"
+                ZIndex="{Binding ZIndex}">
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Vezess egy imafüzetet, ahova jegyzetelhetsz, rajzolhatsz, megerősítő igeszakaszokat írhatsz szabadon, amire az Úr indít. Fontos, hogy visszaolvasható legyen később akár."
+                           TextColor="{DynamicResource TitleColor}"
+                           FontFamily="AptosExtrabold"
+                           HorizontalTextAlignment="Start"
+                           LineBreakMode="WordWrap"
+                           FontSize="20"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</local:BasePage>

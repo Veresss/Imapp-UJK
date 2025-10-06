@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             x:Class="EmptyMauiApp.Views.StylePage"
+             NavigationPage.HasNavigationBar="False">
+
+	<local:BasePage.Background>
+		<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+			<GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+			<GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+		</LinearGradientBrush>
+	</local:BasePage.Background>
+
+	<ScrollView>
+		<VerticalStackLayout Spacing="20" Padding="0">
+			<HorizontalStackLayout Padding="20,0" Margin="0,40,0,20">
+				<Image Source="logo.png"
+                       HeightRequest="60"
+                       Aspect="AspectFit"/>
+				<Label Text="Stílusok"
+                       FontFamily="AptosExtrabold"
+                       FontSize="24"
+                       TextColor="{DynamicResource SecondaryColor}"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+				<ImageButton Source="x_icon.png"
+                             HorizontalOptions="End"
+                             BackgroundColor="Transparent"
+                             HeightRequest="60"
+                             WidthRequest="60"
+                             Clicked="OnBackButtonClicked"
+                             Margin="120,0,0,0"/>
+			</HorizontalStackLayout>
+
+			<Border x:Name="DefaultBorder"
+                    Stroke="{DynamicResource SecondaryTransparent}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 30,0,30,0"
+                    WidthRequest="320"
+                    HeightRequest="60"
+                    Padding="20,10"
+                    Margin="20,0,0,0"
+                    HorizontalOptions="End">
+
+				<Label Text="Alapértelmezett"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontSize="18"
+                       FontFamily="AptosExtrabold"/>
+
+				<Border.Background>
+					<LinearGradientBrush StartPoint="0,0.2" EndPoint="1,0.8">
+						<GradientStop Color="#DEA111" Offset="0.0" />
+						<GradientStop Color="#DEA111" Offset="1.0" />
+					</LinearGradientBrush>
+				</Border.Background>
+
+				<Border.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnStyleOneTapped"/>
+				</Border.GestureRecognizers>
+			</Border>
+
+			<Border x:Name="BrightBorder"
+                    Stroke="{DynamicResource SecondaryTransparent}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 30,0,30,0"
+                    WidthRequest="320"
+                    HeightRequest="60"
+                    Padding="20,10"
+                    Margin="20,0,0,0"
+                    HorizontalOptions="End">
+
+				<Label Text="Világos"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"
+                   FontSize="18"
+                   FontFamily="AptosExtrabold"/>
+
+				<Border.Background>
+					<LinearGradientBrush StartPoint="0,0.2" EndPoint="1,0.8">
+						<GradientStop Color="#FFFFFF" Offset="0.0" />
+						<GradientStop Color="#FFFFFF" Offset="1.0" />
+					</LinearGradientBrush>
+				</Border.Background>
+
+				<Border.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnStyleBrightTapped"/>
+				</Border.GestureRecognizers>
+			</Border>
+
+			<Border x:Name="DarkBorder"
+                    Stroke="{DynamicResource SecondaryTransparent}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 30,0,30,0"
+                    WidthRequest="320"
+                    HeightRequest="60"
+                    Padding="20,10"
+                    Margin="20,0,0,40"
+                    HorizontalOptions="End">
+
+				<Label Text="Sötét"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    TextColor="White"
+                    FontSize="18"
+                    FontFamily="AptosExtrabold"/>
+
+				<Border.Background>
+					<LinearGradientBrush StartPoint="0,0.2" EndPoint="1,0.8">
+						<GradientStop Color="#000000" Offset="0.0" />
+						<GradientStop Color="#000000" Offset="1.0" />
+					</LinearGradientBrush>
+				</Border.Background>
+
+				<Border.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnStyleDarkTapped"/>
+				</Border.GestureRecognizers>
+			</Border>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</local:BasePage>

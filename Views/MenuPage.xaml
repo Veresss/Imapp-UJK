@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             xmlns:models="clr-namespace:EmptyMauiApp.Models"
+             x:Class="EmptyMauiApp.Views.MenuPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <local:BasePage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+        </LinearGradientBrush>
+    </local:BasePage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="0">
+            <HorizontalStackLayout Padding="20,20">
+                <Image Source="logo.png"
+                       HeightRequest="60"
+                       Aspect="AspectFit"/>
+                <Label x:Name="GreetingLabel"
+                       FontFamily="AptosExtrabold"
+                       FontSize="24"
+                       TextColor="{DynamicResource TitleColor}"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Padding="20,0">
+                <Label Text="Menü"
+                   FontFamily="AptosExtrabold"
+                   FontSize="24"
+                   TextColor="{DynamicResource TitleColor}"
+                   VerticalTextAlignment="Start"
+                   Margin="20,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <CarouselView x:Name="carouselView"
+                          Grid.Row="1"
+                          HeightRequest="{OnPlatform Android=420, iOS=400, WinUI=400}"
+                          CurrentItem="{Binding CurrentItem, Mode=TwoWay}"
+                          ItemsSource="{Binding SlideItems}"
+                          PeekAreaInsets="60"
+                          Loop="True"
+                          HorizontalScrollBarVisibility="Never">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:SlideItem">
+                        <Border BackgroundColor="Transparent"
+                               Stroke="Transparent"
+                               HeightRequest="400"
+                               WidthRequest="300"
+                               Margin="0,0,0,0"
+                               Padding="0">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MenuPage}}, Path=SlideTappedCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+
+                            <Grid RowDefinitions="8*">
+                                <Image Grid.Row="0"
+                                    Source="{Binding Icon}"
+                                    Aspect="AspectFit"
+                                    HeightRequest="420"
+                                    Margin="0,-40,0,-30" />
+
+                                <Label Grid.Row="0"
+                                    Text="{Binding Title}" 
+                                    TextColor="{DynamicResource TitleColor}"
+                                    FontFamily="AptosExtrabold"
+                                    FontSize="26"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    Margin="0,20,0,0"/>
+
+                                <Label Grid.Row="0"
+                                    Text="{Binding Description}" 
+                                    TextColor="{DynamicResource SecondaryTransparent}"
+                                    FontFamily="AptosExtrabold"
+                                    FontSize="18"
+                                    MaximumWidthRequest="180"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="End"
+                                    Margin="0,0,0,30"/>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <HorizontalStackLayout Padding="20,0">
+                <Label Text="Extra"
+                   FontFamily="AptosExtrabold"
+                   FontSize="24"
+                   TextColor="{DynamicResource TitleColor}"
+                   VerticalTextAlignment="Start"
+                   Margin="20,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <Border
+                Stroke="{DynamicResource SecondaryTransparent}"
+                WidthRequest="340"
+                HeightRequest="100"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Padding="20"
+                HorizontalOptions="Fill"
+                BackgroundColor="{DynamicResource PrimaryTransparent}">
+
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Napi Evangélium"
+                            TextColor="{DynamicResource TitleColor}"
+                            FontFamily="AptosExtrabold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="18"/>
+                    <Label Text="{Binding CurrentGospel}"
+                            FontFamily="AptosExtrabold"
+                            FontSize="26"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{DynamicResource TitleColor}"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                Stroke="{DynamicResource SecondaryTransparent}"
+                WidthRequest="340"
+                HeightRequest="100"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Padding="20"
+                HorizontalOptions="Fill"
+                BackgroundColor="{DynamicResource PrimaryTransparent}">
+
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Napi Olvasmány"
+                            TextColor="{DynamicResource TitleColor}"
+                            FontFamily="AptosExtrabold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="18"/>
+                    <Label Text="{Binding CurrentReading}"
+                            FontFamily="AptosExtrabold"
+                            FontSize="26"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{DynamicResource TitleColor}"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                Stroke="{DynamicResource SecondaryTransparent}"
+                WidthRequest="340"
+                HeightRequest="100"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Padding="20"
+                HorizontalOptions="Fill"
+                BackgroundColor="{DynamicResource PrimaryTransparent}"
+                Margin="0,0,0,20">
+
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Ennyien imáztak ma már"
+                            TextColor="{DynamicResource TitleColor}"
+                            FontFamily="AptosExtrabold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="18"/>
+                    <Label Text="0"
+                            FontFamily="AptosExtrabold"
+                            FontSize="26"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{DynamicResource TitleColor}"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</local:BasePage>

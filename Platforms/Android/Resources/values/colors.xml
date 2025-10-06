@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#dea532</color>
+    <color name="colorPrimaryDark">#dea532</color>
+    <color name="colorAccent">#2B0B98</color>
+    <color name="status_bar_transparent">#00000000</color>
+</resources>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EmptyMauiApp.Views.CustomControls"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             x:Class="EmptyMauiApp.Views.PrayerPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <local:BasePage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+        </LinearGradientBrush>
+    </local:BasePage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <HorizontalStackLayout Padding="20,0" Margin="0,40,0,0">
+                <Image Source="logo.png"
+                       HeightRequest="60"
+                       Aspect="AspectFit"/>
+                <Label Text="Napi imaidőm"
+                       FontFamily="AptosExtrabold"
+                       FontSize="24"
+                       TextColor="{DynamicResource TitleColor}"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+                <ImageButton 
+                        Source="x_icon.png"
+                        HorizontalOptions="End"
+                        BackgroundColor="Transparent"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        Clicked="OnBackButtonClicked"
+                        Margin="70,0,0,0"/>
+            </HorizontalStackLayout>
+            <VerticalStackLayout>
+                <Border Stroke="{DynamicResource SecondaryTransparent}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 20"
+                        BackgroundColor="{DynamicResource PrimaryTransparent}"
+                        HeightRequest="340"
+                        WidthRequest="340"
+                        Margin="0,20,0,20"/>
+                <custom:CircularProgressView x:Name="ProgressView"
+                        HeightRequest="400"
+                        WidthRequest="400" 
+                        Margin="0,-390,0,0"
+                        IsTimerRunning="{Binding IsTimerRunning, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                        Progress="{Binding Progress, Source={RelativeSource AncestorType={x:Type ContentPage}}}"/>
+                <Label x:Name="TimerLabel"
+                        Text="20 perc"
+                        FontFamily="AptosExtrabold"
+                        TextColor="{DynamicResource TitleColor}"
+                        FontSize="40"
+                        HorizontalOptions="Center"
+                        Margin="10,-230,0,180" />
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Button x:Name="StartButton"
+                            BackgroundColor="{DynamicResource ButtonColor}"
+                            Text="INDÍT"
+                            FontFamily="AptosExtrabold"
+                            TextColor="White"
+                            FontSize="20"
+                            CornerRadius="20"
+                            Clicked="OnStartClicked"
+                            HeightRequest="60"
+                            WidthRequest="150"
+                            Margin="0,0,0,0"
+                            IsEnabled="True" />
+                    <Button x:Name="StopButton"
+                            BackgroundColor="{DynamicResource ButtonColor}"
+                            Text="LEÁLLÍT"
+                            FontFamily="AptosExtrabold"
+                            TextColor="White"
+                            FontSize="20"
+                            CornerRadius="20"
+                            Clicked="OnStopClicked"
+                            HeightRequest="60"
+                            WidthRequest="150"
+                            Margin="20,0,0,0"
+                            IsEnabled="False" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <Label Text="Választható imaidő"
+                   FontFamily="AptosExtrabold"
+                   TextColor="{DynamicResource TitleColor}"
+                   FontSize="22"
+                   HorizontalOptions="Start"
+                   Margin="30,20,0,20" />
+
+            <Grid Margin="0,0,0,0" HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- 1. sor -->
+                <RadioButton x:Name="RadioButton20"
+                    Grid.Column="0"
+                    Content="20" 
+                    Value="20"
+                    GroupName="TimeSelection"
+                    CheckedChanged="OnTimeSelectionChanged"
+                    Style="{DynamicResource TimeRadioButtonStyle}" />
+
+                <RadioButton x:Name="RadioButton25"
+                     Grid.Column="1"
+                     Content="25" 
+                     Value="25"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+                <RadioButton x:Name="RadioButton30"
+                     Grid.Column="2"
+                     Content="30" 
+                     Value="30"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+            </Grid>
+
+            <Grid Margin="0,0,0,0" HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton x:Name="RadioButton35"
+                     Grid.Column="0"
+                     Content="35" 
+                     Value="35"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+                <RadioButton x:Name="RadioButton40"
+                     Grid.Column="1"
+                     Content="40" 
+                     Value="40"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+                <RadioButton x:Name="RadioButton45"
+                     Grid.Column="2"
+                     Content="45" 
+                     Value="45"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+            </Grid>
+
+            <Grid Margin="0,0,0,0" HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton x:Name="RadioButton50"
+                     Grid.Column="0"
+                     Content="50" 
+                     Value="50"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+                <RadioButton x:Name="RadioButton55"
+                     Grid.Column="1"
+                     Content="55" 
+                     Value="55"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+                <RadioButton x:Name="RadioButton60"
+                     Grid.Column="2"
+                     Content="60" 
+                     Value="60"
+                     GroupName="TimeSelection"
+                     CheckedChanged="OnTimeSelectionChanged"
+                     Style="{DynamicResource TimeRadioButtonStyle}" />
+
+            </Grid>
+
+            <Label Text="Tippek"
+                   FontFamily="AptosExtrabold"
+                   TextColor="{DynamicResource TitleColor}"
+                   FontSize="22"
+                   HorizontalOptions="Start"
+                   Margin="30,0,0,0" />
+
+            <Border
+                Stroke="{DynamicResource SecondaryTransparent}"
+                MaximumWidthRequest="340"
+                MaximumHeightRequest="300"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Background="{DynamicResource PrimaryTransparent}"
+                Padding="20"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,0">
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Menj egy csendes helyre, ahol egyedül lehetsz az Istennel, legyen az akár a szobád, vagy a természet."
+                           TextColor="{DynamicResource TitleColor}"
+                           FontFamily="AptosExtrabold"
+                           HorizontalTextAlignment="Start"
+                           LineBreakMode="WordWrap"
+                           FontSize="20"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                Stroke="{DynamicResource SecondaryTransparent}"
+                MaximumWidthRequest="340"
+                MaximumHeightRequest="300"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 20"
+                Background="{DynamicResource PrimaryTransparent}"
+                Padding="20"
+                HorizontalOptions="Fill"
+                Margin="0,20,0,20">
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Szüntess meg minden olyan külső tényezőt, amely úgy gondolod, hogy zavarhat. Tedd a telefonod messzebb magadtól, akár kapcsold be a repülő üzemmódot is. Ne használd közben ezt az alkalmazást se!"
+                           TextColor="{DynamicResource TitleColor}"
+                           FontFamily="AptosExtrabold"
+                           HorizontalTextAlignment="Start"
+                           LineBreakMode="WordWrap"
+                           FontSize="20"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</local:BasePage>

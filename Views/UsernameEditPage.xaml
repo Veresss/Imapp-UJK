@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EmptyMauiApp.Views"
+             x:Class="EmptyMauiApp.Views.UsernameEditPage"
+             NavigationPage.HasNavigationBar="False">
+
+	<local:BasePage.Background>
+		<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+			<GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+            <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+		</LinearGradientBrush>
+	</local:BasePage.Background>
+
+    <Grid RowDefinitions="2*, 1.5*, 2*, 1*, 1*, 5*">
+        <HorizontalStackLayout Grid.Row="0" Padding="20,40,20,0">
+            <Image Source="logo.png"
+                   HeightRequest="60"
+                   Aspect="AspectFit"/>
+            <Label Text="Új felhasználónév"
+                   FontFamily="AptosExtrabold"
+                   FontSize="24"
+                   TextColor="{DynamicResource TitleColor}"
+                   VerticalOptions="Center"
+                   Margin="10,0,0,0"/>
+            <ImageButton Source="x_icon.png"
+                         HorizontalOptions="End"
+                         BackgroundColor="Transparent"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Clicked="OnBackButtonClicked"
+                         Margin="30,0,0,0"/>
+        </HorizontalStackLayout>
+
+        <Label Grid.Row="2"
+               Text="Mi lenne az új név?"
+               TextColor="{DynamicResource TitleColor}"
+               FontSize="40"
+               FontFamily="AptosExtrabold"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               MaximumWidthRequest="300"
+               LineBreakMode="WordWrap"/>
+
+        <Border Grid.Row="3"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 30"
+            Stroke="{DynamicResource SecondaryColor}"
+            HeightRequest="60"
+            WidthRequest="200"
+            Padding="10,5"
+            HorizontalOptions="Center"
+            Margin="0,20,0,20">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{DynamicResource PrimaryColor}" Offset="0.0" />
+                    <GradientStop Color="{DynamicResource PrimaryColor}" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Entry x:Name="NameEditEntry"
+                   Keyboard="Text"
+                   Placeholder="Írd ide..."
+                   PlaceholderColor="{DynamicResource SecondaryTransparent}"
+                   MaxLength="15"
+                   WidthRequest="150"
+                   HeightRequest="60"
+                   TextColor="{DynamicResource SecondaryColor}"
+                   FontFamily="AptosExtrabold"
+                   FontSize="24"
+                   Margin="0,20,0,20"
+                   TextChanged="OnNameEditTextChanged" />
+        </Border>
+
+        <Button Grid.Row="4"
+                x:Name="EditButton"
+                FontSize="24"
+                Text="Módosítás"
+                FontFamily="AptosExtrabold"
+                IsEnabled="False"
+                WidthRequest="200"
+                HeightRequest="60"
+                CornerRadius="30"
+                Clicked="OnEditClicked"
+                HorizontalOptions="Center"
+                Margin="0,40,0,20"
+                TextColor="{DynamicResource ButtonTextColor}"
+                BackgroundColor="{DynamicResource ButtonColor}" />
+    </Grid>
+    
+</local:BasePage>

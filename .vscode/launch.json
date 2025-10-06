@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "vslsRemoteLaunch",
+            "name": "EmptyMauiApp",
+            "request": "attach",
+            "projectID": "1949007e-6531-19b9-bd6c-4a8a235c5803"
+        }
+    ]
+}
